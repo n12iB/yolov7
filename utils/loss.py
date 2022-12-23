@@ -757,7 +757,10 @@ class ComputeLossOTA:
             #fg_mask_inboxes = fg_mask_inboxes.to(torch.device('cuda'))
             matched_gt_inds = matching_matrix[:, fg_mask_inboxes].argmax(0)
         
-            from_which_layer = from_which_layer.to(fg_mask_inboxes.device)[fg_mask_inboxes]#from_which_layer = from_which_layer[fg_mask_inboxes]
+            #from_which_layer = from_which_layer[fg_mask_inboxes]
+            from_which_layer = from_which_layer.to(fg_mask_inboxes.device)[fg_mask_inboxes]
+
+
             all_b = all_b[fg_mask_inboxes]
             all_a = all_a[fg_mask_inboxes]
             all_gj = all_gj[fg_mask_inboxes]
